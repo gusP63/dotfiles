@@ -1,0 +1,97 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar at the bottom of your screen
+    "height": 24, // Waybar height
+    // "width": 1366, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    //"modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1:web": "",
+            "2:code": "",
+            "3:term": "",
+            "4:work": "",
+            "5:music": "",
+            "6:docs": "",
+            "urgent": "",
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 16
+    },
+    "clock": {
+        "format-alt": "{:%Y-%m-%d}",
+	"tooltip": false,
+    },
+   // "cpu": {
+   //     "format": "{usage}% "
+   // },
+   // "memory": {
+   //     "format": "{}% "
+   // },
+    "battery": {
+        "bat": "BAT1",
+        "states": {
+		"full": 100,
+            	 "good": 99,
+            	"warning": 30,
+           	 "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+	"format-icons": ["", "", "", "", ""],
+        // "format-good": "", // An empty format will hide the module
+        "format-full": "  Fully Charged",
+	"format-charging":"  {capacity}%",
+	"tooltip-format-charging": "Charging - {time} remaining",
+	"tooltip-format": "{capacity}% - {time} left",
+	"interval": 30, 
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "  ({signalStrength}%)",
+	"tooltip": true,
+	"tooltip-format": "{essid} ({signalStrength}%)",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠",
+	"on-click": "$HOME/.config/waybar/scripts/nm-connection-menu.sh"
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": " ",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol",
+	"tooltip-format": "Volume Control",
+    },
+    "custom/media": {
+        "format": "{}",
+	"min-lenth": 5,
+        "max-length": 40,
+	//"format-icons": {
+          //  "spotify": "",
+          //  "default":"" 
+       // },
+        //"interval": 30, // Remove this if your script is endless and write in loop
+        "exec": "$HOME/.config/waybar/scripts/media-player.py 2> /dev/null", // Script in resources folder
+	"return-type": "json",
+       // "exec-if": "pgrep spotify"
+    }
+}
