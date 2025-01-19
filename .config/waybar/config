@@ -5,8 +5,8 @@
     // "width": 1366, // Waybar width
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
-    //"modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
+    /* "modules-center": ["clock"], */
+    "modules-right": ["tray", "pulseaudio", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -67,12 +67,12 @@
     "pulseaudio": {
         //"scroll-step": 1,
         "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
         "format-muted": " ",
         "format-icons": {
             "headphones": "",
-            "handsfree": "",
-            "headset": "",
+            "handsfree": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",

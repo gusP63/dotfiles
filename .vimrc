@@ -18,6 +18,11 @@ function! Formatonsave()
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
+nmap <F1> <nop>
+nmap <F2> <nop>
+nmap <F3> <nop>
+nmap <F4> <nop>
+
 " PLUGINS
 call plug#begin()
 

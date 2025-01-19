@@ -19,14 +19,15 @@ set $term kitty --title kitty
 set $menu fuzzel
 
 #Startup
-exec hyprlock 
 exec mako
 exec gammastep
 exec waybar
-exec albert
-exec copyq
-#exec wl-paste --watch cliphist store
+exec wl-paste --primary --watch wl-copy
+exec wl-paste --watch cliphist store
 exec synaptics_intertouch=1
+exec nm-applet
+exec copyq
+exec copyq hide
 
 #GTK Themes
 set $gnome-schema org.gnome.desktop.interface
@@ -56,7 +57,11 @@ for_window [app_id="nm-connection-editor"] floating enable, move position cursor
 for_window [app_id="thunar"] floating enable, resize set width 800px, resize set height 600px, move position center
 for_window [app_id="qalculate-gtk"] floating enable, resize set width 600px, move position center
 
-bindsym $mod+Shift+v exec copyq toggle
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="pavucontrol"] move position center 
+for_window [app_id="pavucontrol"] resize set width 1200 height 1000
+
+bindsym $mod+Shift+v exec cliphist list | fuzzel --dmenu | cliphist decode | wl-copy 
 
 #Colors        #border  #background   #text 
 client.focused #8E91B8 #6D6794 #FFFFFF #8E91B8 #8E91B8 
@@ -120,6 +125,7 @@ bindgesture swipe:right workspace prev
 bindgesture swipe:left  workspace next
 
 bindsym $mod+escape exec systemctl sleep
+
 
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -272,7 +278,12 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86AudioMute exec amixer set Master toggle
     bindsym --locked XF86AudioLowerVolume exec amixer set Master 5%-
     bindsym --locked XF86AudioRaiseVolume exec amixer set Master 5%+
+
+    # Control playback
     bindsym --locked XF86AudioMicMute exec playerctl play-pause
+    bindsym  XF86AudioLowerVolume exec playerctl next 
+    bindsym  XF86AudioRaiseVolume exec playerctl previous
+
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
