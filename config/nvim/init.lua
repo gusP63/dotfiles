@@ -87,9 +87,8 @@ map("n", "<C-f>", function()
 end, { silent = true })
 
 map("n", "<C-s>", ":noa wa<CR>", { silent = true })
-map("n", "<C-b>", ":make <CR>", { silent = true })
-map("n", "<C-n>", ":Odin <CR>", { silent = true })
-map("n", "<C-m>", ":!odin run . <CR>", { silent = true })
+map("n", "<C-b>", ":Odin <CR>", { silent = true })
+map("n", "<C-n>", ":!odin run . <CR>", { silent = true })
 map("n", "<C-s-b>", ":make run<CR>", { silent = true })
 map("v", "<C-y>", '"+y', { silent = true })
 map("n", "<C-p>", '"+p', { silent = true })
@@ -154,11 +153,25 @@ auto_cmd("VimLeavePre", {
         end,
 })
 
+local function goto_definition_vsplit()
+        local current = vim.api.nvim_get_current_win()
+        vim.cmd("wincmd l")
+        local right = vim.api.nvim_get_current_win()
+
+        if right ~= current then
+                vim.cmd("q")
+        end
+
+        vim.cmd("vsplit")
+        vim.lsp.buf.definition()
+end
+
 auto_cmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
                 local opts = { buffer = ev.buf }
                 map("n", "gd", vim.lsp.buf.definition, opts)
+                map("n", "gs", goto_definition_vsplit)
                 map("n", "gr", vim.lsp.buf.references, opts)
                 map("n", "gh", vim.lsp.buf.hover, opts)
                 map("n", "<leader>ih", function()

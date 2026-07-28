@@ -26,7 +26,7 @@
     },
 
     "pulseaudio": {
-        "format": "<span font='10' rise='-1000'>{icon}</span> {volume}%",
+        "format": "<span font='8' rise='0'>{icon}</span> {volume}%",
         "format-muted": "󰟎",
         "format-icons": { "default": "󰋋" },
         "tooltip-format": "{volume}%",
@@ -76,7 +76,7 @@
     },
 
     "custom/trayindicator": {
-        "format": "<span font='10' rise='000'></span>",
+        "format": "<span font='8' rise='1000'></span>",
         "tooltip": false
     },
 
