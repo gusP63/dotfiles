@@ -31,8 +31,7 @@
                     "enable": true,
                     "update-active-window": true,
                     "format": "{icon}",
-                    "icon-size": 16,
-                    "icon-theme": "breeze"
+                    "icon-size": 16
             },
             "active-only": true
     },
