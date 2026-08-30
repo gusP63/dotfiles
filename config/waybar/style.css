@@ -17,6 +17,13 @@ window#waybar {
     color: white;
 }
 
+#workspaces .taskbar-window {
+        opacity: 0.5;
+}
+#workspaces .taskbar-window.active {
+        opacity: 1.0;
+}
+
 #window {
     color: white;
 }

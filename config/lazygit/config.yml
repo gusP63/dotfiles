@@ -70,7 +70,7 @@ keybinding:
     prevTab: '['
     nextScreenMode: +
     prevScreenMode: _
-    cyclePagers: '|'
+    cycleDiffRenderers: '|'
     undo: z
     redo: Z
     filteringMenu: <c-s>

@@ -1,16 +1,15 @@
-#on_press
-#22 = playerctl play-pause
-#
-#
-#on_press
-#21 = ydotool key 105:1
-#23 = ydotool key 106:1
-#on_release
-#21 = ydotool key 105:0
-#23 = ydotool key 106:0
-#
+on_press
+21 = ydotool key 105:1 # left
+22 = ydotool key 57:1 # space
+23 = ydotool key 106:1 # right
+on_release
+21 = ydotool key 105:0
+22 = ydotool key 57:0
+23 = ydotool key 106:0
+
 # /usr/include/linux/input-event-codes.h
 
 on_press
+106 = playerctl play-pause
 107 = playerctl previous
 108 = playerctl next
